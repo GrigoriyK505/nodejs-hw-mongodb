@@ -1,0 +1,35 @@
+{
+  "name": "nodejs-hw-mongodb",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.2.0"
+  },
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "esbuild": "^0.25.1",
+    "nanoid": "^3.3.11",
+    "picocolors": "^1.1.1",
+    "postcss": "^8.5.3",
+    "rollup": "^4.37.0",
+    "source-map-js": "^1.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GrigoriyK505/nodejs-hw-mongodb.git"
+  },
+  "keywords": [],
+  "author": "grigoriy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GrigoriyK505/nodejs-hw-mongodb/issues"
+  },
+  "homepage": "https://github.com/GrigoriyK505/nodejs-hw-mongodb#readme"
+}
