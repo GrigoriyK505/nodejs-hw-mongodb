@@ -22,13 +22,17 @@ const contactSchema = new Schema({
         required: true,
         default: 'personal',
     },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'user',
+        required: true,
+    }
 },
 {
     timestamps: true,
     versionKey: false,
 }
 );
-
 const ContactCollection = model('contact', contactSchema);
 
 export default ContactCollection;
