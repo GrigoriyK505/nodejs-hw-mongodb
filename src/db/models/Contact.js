@@ -26,6 +26,10 @@ const contactSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'user',
         required: true,
+    },
+    parentId: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
     }
 },
 {

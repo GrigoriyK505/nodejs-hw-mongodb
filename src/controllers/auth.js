@@ -1,5 +1,5 @@
 import { ONE_DAY } from "../constants/index.js";
-import { loginUser, refreshUsersSession, registerUser } from "../services/auth.js";
+import { loginUser, logoutUser, refreshUsersSession, registerUser } from "../services/auth.js";
 
 export const registerUserController = async (req, res) => {
     const user = await registerUser(req.body);
@@ -27,8 +27,19 @@ export const loginUserController = async (req, res) => {
     res.json({
         status: 200,
         message: 'Successfully logged in an user!',
-        data: session.accessToken,
+        data: {
+            accessToken: session.accessToken
+        },
     });
+};
+
+export const logoutUserControllers = async (req, res) => {
+    if(req.cookies.sessionId) {
+        await logoutUser(req.cookies.sessionId);
+    }
+
+    res.clearCookie('sessionId');
+    res.clearCookie('refreshToken');
 };
 
 export const setupSession = (res, session) => {
@@ -36,7 +47,7 @@ export const setupSession = (res, session) => {
         httpOnly: true,
         expires: new Date(Date.now() + ONE_DAY),
     });
-    res.cookie('sessionId', session._id, {
+    res.cookie('sessionId', String(session._id), {
         httpOnly: true,
         expires: new Date(Date.now() + ONE_DAY),
     });
