@@ -8,12 +8,11 @@ export const getContacts = async ({
     sortOrder = SORT_ORDER.ASC,
     sortBy = '_id',
     filter = {},
-    userId,
 }) => {
     const limit = perPage;
     const skip = (page - 1) * perPage;
 
-    const contactsQuery = ContactCollection.find({userId});
+    const contactsQuery = ContactCollection.find();
 
     if (filter.contactType) {
         contactsQuery.where('contactType').regex(new RegExp(filter.contactType, 'i'));
@@ -27,7 +26,7 @@ export const getContacts = async ({
     // const contacts = await contactsQuery.skip(skip).limit(limit).sort({[sortBy]: sortOrder}).exec();
 
     const [contactsCount, contacts] = await Promise.all([
-        ContactCollection.find({userId}).merge(contactsQuery).countDocuments(),
+        ContactCollection.find({}).merge(contactsQuery).countDocuments(),
         contactsQuery
             .skip(skip)
             .limit(limit)
@@ -42,7 +41,10 @@ export const getContacts = async ({
     };
 };
 
-export const getContactById = (contactId, userId) => ContactCollection.findOne({_id: contactId, userId});
+export const getContactById = async (contactId) => {
+    const data = await ContactCollection.findOne({_id: contactId});
+    return data;
+};
 
 export const createContact = async (payload, userId) => {
     const contact = await ContactCollection.create(payload);  

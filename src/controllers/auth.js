@@ -40,6 +40,8 @@ export const logoutUserControllers = async (req, res) => {
 
     res.clearCookie('sessionId');
     res.clearCookie('refreshToken');
+
+    res.status(204).send();
 };
 
 export const setupSession = (res, session) => {
