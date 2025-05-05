@@ -91,15 +91,17 @@ export const requestResetToken = async (email) => {
         throw createHttpError(404, 'User not found');
     }
 
-    const resetToken = jwt.sign({
-        sub: user._id,
-        email,
-    },
-    getEnvVar('JWT_SECRET'),
+    const resetToken = jwt.sign(
         {
-            expires: '15m',
+            sub: user._id,
+            email,
+        },
+        getEnvVar('JWT_SECRET'),
+        {
+            expiresIn: '15m',
         },
     );
+    
     const resetPasswordTemplatePath = path.join(
         TEMPLATES_DIR, 'reset-password-email.html',
     );
@@ -115,7 +117,7 @@ export const requestResetToken = async (email) => {
     });
 
     await sendEmail({
-    FROM: getEnvVar(SMTP.SMTP_FROM),
+    from: getEnvVar(SMTP.SMTP_FROM),
     to: email,
     subject: 'Reset you password',
     html,
