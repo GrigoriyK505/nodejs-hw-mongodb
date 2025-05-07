@@ -6,8 +6,11 @@ const transporter = nodemailer.createTransport({
     host: getEnvVar(SMTP.SMTP_HOST),
     port: Number(getEnvVar(SMTP.SMTP_PORT)),
     auth: {
-        user:getEnvVar(SMTP.SMTP_USER),
+        user: getEnvVar(SMTP.SMTP_USER),
         pass: getEnvVar(SMTP.SMTP_PASSWORD),
+    },
+    tls: {
+        rejectUnauthorized: false, // <--- додаємо цей параметр
     },
 });
 

@@ -1,4 +1,4 @@
-import { createContact, deleteContact, getContactById, getContacts} from "../services/contacts.js";
+import { createContact, deleteContact, getContactById, getContacts, updateContact} from "../services/contacts.js";
 import createHttpError from "http-errors";
 import { parsePaginationParams } from "../utils/parsePaginationParams.js";
 import { parseSortParams } from "../utils/parseSortParams.js";
@@ -82,7 +82,7 @@ export const patchContactController = async (req, res, next) => {
         }
     }
      
-    const result = await saveFileToUploadDir(contactId, {
+    const result = await updateContact(contactId, {
         ...req.body,
         photo: photoUrl,
     });
