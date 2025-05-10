@@ -1,35 +1,30 @@
 {
-  "name": "nodejs-hw-mongodb",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "vite": "^6.2.0"
-  },
+  "name": "nodejs-basics",
+  "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "esbuild": "^0.25.1",
-    "nanoid": "^3.3.11",
-    "picocolors": "^1.1.1",
-    "postcss": "^8.5.3",
-    "rollup": "^4.37.0",
-    "source-map-js": "^1.2.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/GrigoriyK505/nodejs-hw-mongodb.git"
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint src/**/*.js",
+    "start": "node ./src/index.js",
+    "dev": "nodemon src/index.js"
   },
   "keywords": [],
-  "author": "grigoriy",
+  "author": "Alexander Repeta <a.repeta@goit.global>",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/GrigoriyK505/nodejs-hw-mongodb/issues"
+  "devDependencies": {
+    "@eslint/js": "^9.2.0",
+    "eslint": "^9.2.0",
+    "globals": "^15.1.0",
+    "nodemon": "^3.1.0"
   },
-  "homepage": "https://github.com/GrigoriyK505/nodejs-hw-mongodb#readme"
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "http-errors": "^2.0.0",
+    "mongoose": "^8.13.0",
+    "pino-http": "^10.4.0",
+    "pino-pretty": "^13.0.0"
+  }
 }
