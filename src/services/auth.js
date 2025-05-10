@@ -130,7 +130,7 @@ export const resetPassword = async (payload) => {
     try {
         entries = jwt.verify(payload.token, getEnvVar('JWT_SECRET'));
     } catch (err) {
-        if(err instanceof Error) throw createHttpError(401, err.message);
+        if(err instanceof Error) throw createHttpError(401, 'Token is expired or invalid.');
         throw err;
     }
 
@@ -140,7 +140,7 @@ export const resetPassword = async (payload) => {
     });
 
     if(!user) {
-        throw createHttpError(404, 'User not found');
+        throw createHttpError(404, 'User not found!');
     }
 
     const encryptedPassword = await bcrypt.hash(payload.password, 10);
