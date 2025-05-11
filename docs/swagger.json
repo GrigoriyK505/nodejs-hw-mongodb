@@ -14,7 +14,7 @@
       "url": "http://localhost:3000"
     },
     {
-      "url": "//example.com/api/v1"
+      "url": "https://nodejs-hw-mongodb-9m3r.onrender.com"
     }
   ],
   "tags": [
@@ -198,7 +198,6 @@
                 "required": [
                   "name",
                   "phoneNumber",
-                  "email",
                   "isFavourite",
                   "contactType"
                 ],
@@ -365,13 +364,6 @@
             "multipart/form-data": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "name",
-                  "phoneNumber",
-                  "email",
-                  "isFavourite",
-                  "contactType"
-                ],
                 "properties": {
                   "name": {
                     "description": "Contact's name",
@@ -472,23 +464,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Delete contact by id",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "status"
-                  ],
-                  "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": 204
-                    }
-                  }
-                }
-              }
-            }
+            "description": "Delete contact by id"
           },
           "404": {
             "$ref": "#/components/responses/404"
